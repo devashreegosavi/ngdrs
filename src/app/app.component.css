@@ -1,0 +1,9 @@
+.error-message {
+    color: red;
+    font-weight: bold;
+    font-size: 0.875em; /* Adjust font size as needed */
+  }
+  
+  .error-message small {
+    display: block; /* Ensure each error message appears on a new line */
+  }
