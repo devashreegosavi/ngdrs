@@ -36,6 +36,11 @@
                                     placeholder="Middle Name"
                                     ngModel required
                                 />
+                                <div *ngIf="form.get('middlename')?.invalid && form.get('middlename')?.touched" class="error-message">
+                                    <small *ngIf="form.get('middlename')?.errors?.['required']">Middle Name is required.</small>
+                                    <small *ngIf="form.get('middlename')?.errors?.['minlength']">Middle Name must be at least 20 characters long.</small>
+                                    <small *ngIf="form.get('middlename')?.errors?.['alphabetic']">Middle Name must contain only alphabetic characters.</small>
+                                </div>
                                 </div>
                                 <div class="col">
                                 <input
@@ -46,6 +51,11 @@
                                     placeholder="Last Name"
                                     ngModel required
                                 />
+                                <div *ngIf="form.get('lastname')?.invalid && form.get('lastname')?.touched" class="error-message">
+                                    <small *ngIf="form.get('lastname')?.errors?.['required']">Last Name is required.</small>
+                                    <small *ngIf="form.get('lastname')?.errors?.['minlength']">Last Name must be at least 20 characters long.</small>
+                                    <small *ngIf="form.get('lastname')?.errors?.['alphabetic']">Last Name must contain only alphabetic characters.</small>
+                                </div>
                                 </div>
                                 <!--<div *ngIf="validationErrors?.name != undefined" class="flex flex-col">
                                     <small  class="text-danger">
