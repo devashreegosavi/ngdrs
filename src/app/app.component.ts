@@ -39,8 +39,8 @@ export class AppComponent {
       this.form = this.formbuilder.group(
         {
           firstname: ['', [Validators.required, Validators.minLength(20), this.alphabeticValidator()]],
-          middlename: ['', Validators.required, Validators.minLength(20), this.alphabeticValidator()],
-          lastname: ['', Validators.required, Validators.minLength(20), this.alphabeticValidator()],
+          middlename: ['', [Validators.required, Validators.minLength(20), this.alphabeticValidator()]],
+          lastname: ['', [Validators.required, Validators.minLength(20), this.alphabeticValidator()]],
           building: ['', Validators.required],
           street: ['', Validators.required],
           city: ['', Validators.required],
