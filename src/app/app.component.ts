@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { ApiService } from './api.service';
+import { IdentificationMaster } from './identificationmaster.model';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +19,7 @@ export class AppComponent {
   ];
 
   selectedValue: string = '';
+  displaydata : IdentificationMaster[] | undefined;
 
   form : FormGroup = new FormGroup({
     firstname: new FormControl(''),
@@ -32,7 +35,7 @@ export class AppComponent {
     pan_no: new FormControl(''),
   });
 
-  constructor(private formbuilder : FormBuilder){
+  constructor(private formbuilder : FormBuilder, private apiservice : ApiService){
 
   }
   ngOnInit() : void{
@@ -51,6 +54,14 @@ export class AppComponent {
           pan_no: ['', Validators.required],
         }
       );
+
+      this.apiservice.getidentificationdetails().subscribe(data =>{
+        this.displaydata = data;
+        console.log(this.displaydata);
+        },error =>{
+          console.log(error);
+        }
+      )
   }
   onSubmit(): void {
     this.submitted = true;
