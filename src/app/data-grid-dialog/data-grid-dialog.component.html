@@ -1,7 +1,5 @@
 <h1 mat-dialog-title>Citizen User Data</h1>
-<div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
-  </div>
+
 <div mat-dialog-content>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -43,4 +41,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
 </div>
