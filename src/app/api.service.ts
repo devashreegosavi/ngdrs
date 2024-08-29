@@ -13,4 +13,8 @@ export class ApiService {
   getidentificationdetails() : Observable<IdentificationMaster[]>{
     return this.http.get<IdentificationMaster[]>('http://localhost:3000/identificationdata');
   }
+
+  getallusercitizendata() : Observable<any[]>{
+    return this.http.get<any[]>('http://localhost:3000/getallusercitizendata');
+  }
 }

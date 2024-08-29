@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ApiService } from './api.service';
 import { IdentificationMaster } from './identificationmaster.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DataGridDialogComponent } from './data-grid-dialog/data-grid-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +13,18 @@ import { IdentificationMaster } from './identificationmaster.model';
 export class AppComponent {
   title = 'ngdrs';
   submitted = false;
-  idproofs = [
+  dispdata : any[] = [];
+
+  /*idproofs = [
     { value: '1', label: 'Driving License' },
     { value: '2', label: 'PAN' },
     { value: '3', label: 'Passport' },
     { value: '4', label: 'Voter Card' }
-  ];
+  ];*/
 
   selectedValue: string = '';
   displaydata : IdentificationMaster[] | undefined;
-
+  idproofs : IdentificationMaster[] | undefined;
   form : FormGroup = new FormGroup({
     firstname: new FormControl(''),
     middlename: new FormControl(''),
@@ -35,7 +39,7 @@ export class AppComponent {
     pan_no: new FormControl(''),
   });
 
-  constructor(private formbuilder : FormBuilder, private apiservice : ApiService){
+  constructor(private formbuilder : FormBuilder, private apiservice : ApiService, public dialog : MatDialog){
 
   }
   ngOnInit() : void{
@@ -57,11 +61,14 @@ export class AppComponent {
 
       this.apiservice.getidentificationdetails().subscribe(data =>{
         this.displaydata = data;
-        console.log(this.displaydata);
+        //console.log(this.displaydata);
+        this.idproofs = data;
         },error =>{
           console.log(error);
         }
       )
+
+      
   }
   onSubmit(): void {
     this.submitted = true;
@@ -81,5 +88,27 @@ export class AppComponent {
       const isValid = /^[a-zA-Z]*$/.test(control.value);
       return isValid ? null : { 'alphabetic': true };
     };
+  }
+  fetchUserCitizenData() : void{
+    this.apiservice.getallusercitizendata().subscribe(userdata => {
+      //console.log(userdata);
+      this.dispdata = userdata;
+      },error => {
+        console.log(error)
+      }
+    )
+  }
+
+  openDialog() : void {
+    this.apiservice.getallusercitizendata().subscribe(userdata => {
+      //console.log(userdata);
+      //this.dispdata = userdata;
+      this.dialog.open(DataGridDialogComponent,{
+        data : userdata,
+      })
+      },error => {
+        console.log(error)
+      }
+    )
   }
 }

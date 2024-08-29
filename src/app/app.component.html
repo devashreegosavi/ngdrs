@@ -193,7 +193,8 @@
                                             <div class="col">
                                                 <select id="id_type" formControlName="id_type" class="form-control" [(ngModel)]="selectedValue" (change)="onSelectionChange($event)">
                                                     <option value="" disabled selected>--Select ID Proof--</option>
-                                                    <option *ngFor="let option of idproofs" [value]="option.value">{{ option.label }}</option>
+                                                    <option *ngFor="let option of idproofs" [value]="option.identificationtype_id">{{ option.identificationtype_desc_en }}</option>
+                                                    <!--<option *ngFor="let option of idproofs" [value]="option.value">{{ option.label }}</option>-->
                                                   </select>
                                             </div>
                                             <div class="col">
@@ -211,6 +212,7 @@
                                                     placeholder="Id Proof No."
                                                     ngModel required
                                                 />
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -231,7 +233,39 @@
                                     Reset
                                 </button>
                                 </div>
-                                
+                                <div class="col">
+                                    <!--<button (click)="fetchUserCitizenData()" class="btn btn-primary">Load Data</button>-->
+                                    &nbsp;
+                                    <button mat-button (click)="openDialog()">View Citizen User Data</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <table border="1" *ngIf="dispdata.length > 0">
+                                        <thead>
+                                          <tr>
+                                            <th>user_id</th>
+                                            <th>username</th>
+                                            <th>office_id</th>
+                                            <th>role_id</th>
+                                            <th>full_name</th>
+                                            <th>mobile_no</th>
+                                            <th>email_id</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor="let item of dispdata">
+                                            <td>{{ item.user_id }}</td>
+                                            <td>{{ item.username }}</td>
+                                            <td>{{ item.office_id }}</td>
+                                            <td>{{ item.role_id }}</td>
+                                            <td>{{ item.full_name }}</td>
+                                            <td>{{ item.mobile_no }}</td>
+                                            <td>{{ item.email_id }}</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
                             </div>
                         </div>
                     </form>
