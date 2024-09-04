@@ -1,0 +1,10 @@
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(218, 11, 11);
+  }
+  
+  .active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
