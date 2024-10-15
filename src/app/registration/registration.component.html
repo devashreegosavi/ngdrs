@@ -138,6 +138,48 @@
                                                 />
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label
+                                                    for="state"
+                                                    class="form-label">State
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                                <select id="state" formControlName="state" class="form-control" [(ngModel)]="selectedState" (change)="onStateChange($event)">
+                                                    <option value="" disabled selected>--Select State--</option>
+                                                    <option *ngFor="let option of states" [value]="option.state_id">{{ option.state_name_en }}</option>
+                                                  </select>
+                                            </div>
+                                            <div class="col">
+                                                <label
+                                                    for="districts"
+                                                    class="form-label">District
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                                <select id="district" formControlName="district" class="form-control" [(ngModel)]="selectedDistrict" (change)="onDistrictChange($event)">
+                                                    <option value="" disabled selected>--Select District--</option>
+                                                    <option *ngFor="let option of districts" [value]="option.district_id">{{ option.district_name_en }}</option>
+                                                  </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label
+                                                    for="taluka"
+                                                    class="form-label">Taluka
+                                                </label>
+                                            </div>
+                                            <div class="col">
+                                                <select id="taluka" formControlName="taluka" class="form-control" [(ngModel)]="selectedtaluka" >
+                                                    <option value="" disabled selected>--Select Taluka--</option>
+                                                    <option *ngFor="let option of talukas" [value]="option.taluka_id">{{ option.taluka_name_en }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col"></div>
+                                            <div class="col"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 

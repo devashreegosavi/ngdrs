@@ -4,6 +4,7 @@ import { ApiService } from '../api.service';
 import { IdentificationMaster } from '../identificationmaster.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DataGridDialogComponent } from '../data-grid-dialog/data-grid-dialog.component';
+import { UserMaster } from '../usermaster.model';
 
 @Component({
   selector: 'app-registration',
@@ -15,8 +16,14 @@ export class RegistrationComponent {
   submitted = false;
   dispdata : any[] = [];
   selectedValue: string = '';
+  selectedState : string = '';
+  selectedDistrict : string = '';
+  selectedtaluka : string = '';
   displaydata : IdentificationMaster[] | undefined;
   idproofs : IdentificationMaster[] | undefined;
+  states : any[] = [];
+  districts : any[] = [];
+  talukas : any[] = [];
 
   form : FormGroup = new FormGroup({
     firstname: new FormControl(''),
@@ -26,6 +33,9 @@ export class RegistrationComponent {
     street: new FormControl(''),
     city: new FormControl(''),
     pincode: new FormControl(''),
+    state : new FormControl(''),
+    district : new FormControl(''),
+    taluka : new FormControl(''),
     email_id: new FormControl(''),
     mobile_no: new FormControl(''),
     id_type: new FormControl(''),
@@ -46,6 +56,9 @@ export class RegistrationComponent {
         street: ['', Validators.required],
         city: ['', Validators.required],
         pincode: ['', Validators.required],
+        state : ['', Validators.required],
+        district : ['', Validators.required],
+        taluka : ['', Validators.required],
         email_id: ['', Validators.required],
         mobile_no: ['', Validators.required],
         id_type: ['', Validators.required],
@@ -61,6 +74,21 @@ export class RegistrationComponent {
         console.log(error);
       }
     )
+
+    this.apiservice.getallstatesdata().subscribe(data => {
+      console.log(data);
+      this.states = data;
+    },error => {
+        console.log(error);
+    }
+  )
+
+    /*this.apiservice.getuserdatalist().subscribe(data => {
+      console.log(data);
+    },error => {
+      console.log(error);
+    }
+  )*/
    
   }
   onSubmit(): void {
@@ -73,7 +101,30 @@ export class RegistrationComponent {
   }
   onSelectionChange(event: any) {
     this.selectedValue = event.target.value;
-    console.log('Selected Value:', this.selectedValue);
+    //console.log('Selected Value:', this.selectedValue);
+  }
+
+  onStateChange(event : any){
+    this.selectedState = event.target.value;
+    //console.log('Selected State : ', this.selectedState);
+
+    this.apiservice.getdistrictbystateid(this.selectedState).subscribe(data => {
+      console.log(data);
+      this.districts = data;
+      this.talukas = [];
+    },error => {
+      console.log(error);
+    })
+
+  }
+
+  onDistrictChange(event: any){
+    this.selectedDistrict = event.target.value;
+
+    this.apiservice.gettalukabydistrictid(this.selectedDistrict).subscribe(data => {
+      console.log(data);
+      this.talukas = data;
+    })
   }
 
   alphabeticValidator(): ValidatorFn {
