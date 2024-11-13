@@ -1,0 +1,15 @@
+.login-form{
+    border:1px solid gray;
+    box-shadow : 2px 2px 2px black;
+    padding : 20px;
+    border-radius: 10px;
+    font-family: arial;
+    width:250px;
+}
+
+.login-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh;*/
+}

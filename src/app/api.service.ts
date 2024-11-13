@@ -35,4 +35,10 @@ export class ApiService {
   gettalukabydistrictid(districtid : any) : Observable<any[]>{
     return this.http.get<any[]>('http://localhost:3000/getalltalukadata/'+districtid)
   }
+
+  getdbpwd(usernm : any) : Observable<any[]>{
+    //console.log(usernm);
+    return this.http.get<any[]>('http://localhost:3000/getpwdfromdb/'+usernm)
+  }
+
 }

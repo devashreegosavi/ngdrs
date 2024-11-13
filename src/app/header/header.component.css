@@ -1,10 +1,28 @@
-nav a {
+/*nav a {
     margin: 0 15px;
     text-decoration: none;
     color: rgb(218, 11, 11);
-  }
+  }*/
   
   .active {
     font-weight: bold;
     text-decoration: underline;
   }
+
+  nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid gray;
+    font-family: Arial;
+    margin-bottom: 20px;
+  }
+  .brand-title{
+      font-style: 20px;
+      font-weight: bold;
+  }
+  nav span{
+      margin-right: 30px;
+      font-size:20px;
+  }
+  

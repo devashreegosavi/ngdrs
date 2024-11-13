@@ -1,0 +1,15 @@
+<div class="login-container">
+    <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form alert alert-warning alert-dismissible">
+        <h3 class='bi bi-person-fill'>Login</h3>
+            <dl>
+                <dt>Username</dt>
+                <dd><input type="text" class='form-control' formControlName="username" /></dd>
+                <dt>Password</dt>
+                <dd><input type="text" class='form-control' formControlName="password" /></dd>
+            </dl>
+            <button class='btn btn-warning w-100'>Login</button>
+    </form>
+</div>
