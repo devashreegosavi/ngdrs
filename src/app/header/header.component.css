@@ -10,12 +10,12 @@
   }
 
   nav{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    /*display: flex;
+    justify-content: space-between;*/
+    padding: 40px;
     border: 1px solid gray;
     font-family: Arial;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
   }
   .brand-title{
       font-style: 20px;
