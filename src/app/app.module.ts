@@ -22,6 +22,10 @@ import { TrackGrievanceComponent } from './track-grievance/track-grievance.compo
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { GeneralInfoListComponent } from './general-info-list/general-info-list.component';
+import { EsearchComponent } from './esearch/esearch.component';
+import { UserMnmtComponent } from './user-mnmt/user-mnmt.component';
+import { ValuationComponent } from './valuation/valuation.component';
+import { CertCopyComponent } from './cert-copy/cert-copy.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,10 @@ import { GeneralInfoListComponent } from './general-info-list/general-info-list.
     WelcomepageComponent,
     LeftMenuComponent,
     GeneralInfoListComponent,
+    EsearchComponent,
+    UserMnmtComponent,
+    ValuationComponent,
+    CertCopyComponent,
   ],
   imports: [
     BrowserModule,
