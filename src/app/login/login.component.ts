@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { EncDecService } from '../enc-dec.service';
 import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,7 +20,7 @@ export class LoginComponent {
   usernm : string = '';
   errorMessage : string = '';
 
-  constructor(private fb : FormBuilder, private encdec : EncDecService, private apiservice : ApiService, private router : Router, private route : ActivatedRoute){
+  constructor(private fb : FormBuilder, private encdec : EncDecService, private apiservice : ApiService, private router : Router, private route : ActivatedRoute, private auth : AuthService){
     this.loginForm = this.fb.group({
         username : ['',[Validators.required]],
         password : ['',[Validators.required]]
@@ -59,6 +60,7 @@ export class LoginComponent {
         if(this.encryptedstr===pwdfromdb){
           // redirect to welcome page
           this.router.navigate(['/welcomepage']);
+          this.auth.login();
         }
         else{
           //redirect to login page with invalid password message

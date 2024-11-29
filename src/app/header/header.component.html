@@ -45,7 +45,8 @@
           <span><a routerLink="/trackgrievance" routerLinkActive="active">Track Grievance</a></span>      
       </div>
       <div>
-        <span><a routerLink="/login" routerLinkActive="active">Login</a></span>
+        <span><a routerLink="/login" routerLinkActive="active" *ngIf="!auth.isAuthenticated();">Login</a></span>
+        <button class="btn btn-danger" (click)="onLogout()" *ngIf="auth.isAuthenticated();">Logout</button>
       </div>
   </nav>
 <!--</div>-->
