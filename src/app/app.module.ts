@@ -17,6 +17,11 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
+import { SubmitGrievanceComponent } from './submit-grievance/submit-grievance.component';
+import { TrackGrievanceComponent } from './track-grievance/track-grievance.component';
+import { WelcomepageComponent } from './welcomepage/welcomepage.component';
+import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { GeneralInfoListComponent } from './general-info-list/general-info-list.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,11 @@ import { FooterComponent } from './footer/footer.component';
     AboutusComponent,
     LoginComponent,
     FooterComponent,
+    SubmitGrievanceComponent,
+    TrackGrievanceComponent,
+    WelcomepageComponent,
+    LeftMenuComponent,
+    GeneralInfoListComponent,
   ],
   imports: [
     BrowserModule,

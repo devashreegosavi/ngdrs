@@ -58,7 +58,7 @@ export class LoginComponent {
         // here checking database pwd with entered pwd
         if(this.encryptedstr===pwdfromdb){
           // redirect to welcome page
-          this.router.navigate(['/home']);
+          this.router.navigate(['/welcomepage']);
         }
         else{
           //redirect to login page with invalid password message
