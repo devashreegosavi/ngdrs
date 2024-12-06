@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent {
   imageemblem = 'assets/embelem1.png';
   altText = 'Example Image';
 
-  constructor(public auth : AuthService){
+  constructor(public auth : AuthService, private router : Router){
 
   }
 
@@ -20,5 +21,6 @@ export class HeaderComponent {
 
   onLogout(){
     this.auth.logout();
+    this.router.navigate(['/home']);
   }
 }
